@@ -1,0 +1,10 @@
+{
+  "default_page_size": 25,
+  "backup_schedule": {
+    "enabled": true,
+    "frequency": "DAILY",
+    "time": "02:00",
+    "day_of_week": "SUNDAY",
+    "timezone": "Asia/Manila"
+  }
+}

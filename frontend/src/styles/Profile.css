@@ -1,0 +1,262 @@
+/* =========================================================
+   MY PROFILE
+========================================================= */
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.profile-kicker {
+  display: block;
+  margin-bottom: 6px;
+  color: #20704f;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.profile-page-header h1 {
+  margin: 0 0 6px;
+  color: #17324f;
+  font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+}
+
+.profile-page-header p,
+.profile-section-heading p {
+  margin: 0;
+  color: #7a899a;
+  line-height: 1.55;
+}
+
+.profile-message {
+  margin: 0;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(260px, 0.72fr)
+    minmax(0, 1.7fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.profile-card {
+  overflow: hidden;
+  border: 1px solid #dce6e2;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow:
+    0 10px 28px rgba(19, 50, 79, 0.05);
+}
+
+.profile-section-heading {
+  padding: 20px 22px;
+  border-bottom: 1px solid #e6ece9;
+}
+
+.profile-section-heading h2 {
+  margin: 0 0 5px;
+  color: #18324e;
+  font-size: 1.03rem;
+}
+
+.profile-section-heading p {
+  font-size: 0.83rem;
+}
+
+.profile-photo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 30px 24px;
+}
+
+.profile-photo-preview {
+  width: 148px;
+  height: 148px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 5px solid #eef5f1;
+  border-radius: 50%;
+  background: #e7f4ec;
+  color: #196645;
+  font-size: 2.25rem;
+  font-weight: 800;
+  box-shadow:
+    0 0 0 1px #d6e6dd;
+}
+
+.profile-photo-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-photo-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.profile-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.profile-photo-picker {
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profile-photo-actions .app-button {
+  width: 100%;
+}
+
+.profile-remove-photo {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #b32f2f;
+  padding: 8px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.profile-remove-photo:hover {
+  text-decoration: underline;
+}
+
+.profile-remove-photo:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.profile-form {
+  padding: 22px;
+}
+
+.profile-form-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.profile-field label {
+  color: #31465b;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.profile-field input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #cfdad6;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 10px 12px;
+  color: #17324f;
+  font: inherit;
+  outline: none;
+}
+
+.profile-field input:focus {
+  border-color: #338262;
+  box-shadow:
+    0 0 0 3px rgba(51, 130, 98, 0.12);
+}
+
+.profile-field small {
+  color: #8795a3;
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.profile-readonly-value {
+  box-sizing: border-box;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e7e4;
+  border-radius: 10px;
+  background: #f6f8f7;
+  padding: 10px 12px;
+  color: #596b7d;
+  font-weight: 700;
+}
+
+.profile-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #e8edeb;
+}
+
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-photo-content {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .profile-photo-actions {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-photo-content {
+    flex-direction: column;
+  }
+
+  .profile-photo-actions {
+    max-width: none;
+  }
+
+  .profile-form-actions {
+    justify-content: stretch;
+  }
+
+  .profile-form-actions .app-button {
+    width: 100%;
+  }
+}

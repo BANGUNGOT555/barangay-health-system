@@ -1,0 +1,67 @@
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Backend
+backend/.venv/
+backend/.env
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE
+.vscode/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# ML artifacts
+backend/app/ml/artifacts/*
+!backend/app/ml/artifacts/.gitkeep
+
+# Local database backups and secrets
+database_backups/
+scripts/backup/backup-settings.local.json
+.phase1-backup/
+
+# Local deployment machine configuration and runtime state
+scripts/deployment/deployment-settings.local.json
+runtime/
+.profile-backup/
+.system-settings-install-backup/
+config/system-settings.json
+backend/storage/profile_photos/*
+!backend/storage/profile_photos/.gitignore
+data/
+data_backup/
+data_prepared/
+data_recovered/
+*.bak
+
+# Local testing and review files
+backend/smoketest/
+backend/test_data.py
+backend/.venv_backup_broken/
+check_dataset.py
+medicine_models_review.txt
+medicine_services_review.txt
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+.venv/
+.venv_backup*/
+
+# Explicit local environment and configuration protection
+.env
+.env.*
+!.env.example
+!.env.staging.example
+backend/.venv_backup_broken/
+scripts/backup/backup-settings.local.json
+scripts/deployment/deployment-settings.local.json

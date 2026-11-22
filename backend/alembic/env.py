@@ -83,11 +83,27 @@ def run_migrations_offline() -> None:
 # ONLINE MIGRATIONS
 # =========================================================
 
+
 def run_migrations_online() -> None:
     """
     Run migrations using a live
     database connection.
     """
+
+    connect_args = {}
+
+    if settings.DATABASE_SSL:
+        if not settings.DATABASE_SSL_CA:
+            raise ValueError(
+                "DATABASE_SSL_CA must be configured "
+                "when DATABASE_SSL is enabled."
+            )
+
+        connect_args.update({
+            "ssl_ca": settings.DATABASE_SSL_CA,
+            "ssl_verify_cert": True,
+            "ssl_verify_identity": True,
+        })
 
     connectable = engine_from_config(
         config.get_section(
@@ -96,6 +112,7 @@ def run_migrations_online() -> None:
         ),
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
+        connect_args=connect_args,
     )
 
     with connectable.connect() as connection:
@@ -107,6 +124,9 @@ def run_migrations_online() -> None:
 
         with context.begin_transaction():
             context.run_migrations()
+
+    connectable.dispose()
+
 
 
 # =========================================================

@@ -1,3 +1,4 @@
+from sqlalchemy.engine import URL
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,6 +19,8 @@ class Settings(BaseSettings):
 
     # Database settings
     DATABASE_PORT: int = 3306
+    DATABASE_SSL: bool = False
+    DATABASE_SSL_CA: str | None = None
 
     # Frontend
     FRONTEND_URL: str = "http://localhost:5173"
@@ -42,16 +45,18 @@ class Settings(BaseSettings):
         case_sensitive=True,
     )
 
+
     @property
     def database_url(self) -> str:
-        return (
-            f"mysql+pymysql://"
-            f"{self.DATABASE_USER}:"
-            f"{self.DATABASE_PASSWORD}@"
-            f"{self.DATABASE_HOST}:"
-            f"{self.DATABASE_PORT}/"
-            f"{self.DATABASE_NAME}"
-        )
+        return URL.create(
+            drivername="mysql+pymysql",
+            username=self.DATABASE_USER,
+            password=self.DATABASE_PASSWORD,
+            host=self.DATABASE_HOST,
+            port=self.DATABASE_PORT,
+            database=self.DATABASE_NAME,
+        ).render_as_string(hide_password=False)
+
 
 
 settings = Settings()
